@@ -2,7 +2,7 @@ This README file is for the Event Tracker project I created. The purpose of this
 
 The events I tracked in my project were fuel payments, which consisted of the name of the gas station, its address, the grade of gas, the amount of gallons purchased, the price per gallon, the total purchase price, and the date of the transaction.  
 
-I captured the data using a one-table MySQL database, called fueldb, with a table called "payment." Each payment id was assigined an integer as its primary key, and it was auto-incremented.  The name of the station, address, and grade were stored as VARCHARs.  Galloons, price per gallon, and total price were stored as DECIMALs, and date was stored as a DATE.
+I captured the data using a one-table MySQL database, called fueldb, with a table called "payment." Each payment id was assigined an integer as its primary key, and it was auto-incremented.  The name of the station, address, and grade were stored as VARCHARs.  Gallons, price per gallon, and total price were stored as DECIMALs, and date was stored as a DATE.
 
 I created a corresponding Payment object in Java, utilizing appropriate annotation to map the objects to database and tested the mappings with JUnit.
 
