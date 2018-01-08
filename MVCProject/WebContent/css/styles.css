@@ -1,0 +1,51 @@
+body {
+	font-family: arial, sans-serif;
+	
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.clickable:hover {
+background-color: CadetBlue;
+color:LawnGreen;
+font-size: 20px;
+
+}
+form{
+font-family: arial, sans-serif;
+}
+
+.btn {
+	font-size: 16px;
+	
+}
+
+
+
+#box {
+	width: 300px;
+    height: 100px;
+	padding-bottom: 50px;
+}
+
+#box div {    
+    flex-basis:auto;
+    font-size: 18px;
+    color: Black;
+	border: 2px solid Black;
+	background-color: DarkGray;
+}
+

@@ -19,12 +19,7 @@ import entities.Payment;
 public class PaymentController {
 
 	@Autowired
-	PaymentDAO dao;
-
-//	@RequestMapping(path = "ping", method = RequestMethod.GET)
-//	public String ping() {
-//		return "pong";
-//	}
+	private PaymentDAO dao;
 
 	@RequestMapping(path = "payments", method = RequestMethod.GET)
 	public List<Payment> index() {

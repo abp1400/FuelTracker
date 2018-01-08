@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+	<link rel="stylesheet" href="css/styles.css">
+	<meta charset="UTF-8">
+		<title>Fuel Tracker</title>	
+	</head>
+	
+	<body>
+	
+	<h1> Fuel Payment Tracker</h1>
+<form ng-hide="vm.selected">
+Store Name <input type="text" ng-model="payment.storeName" placeholder="e.g.: Shell"/> <br>
+Store Address <input type="text" ng-model="payment.address" placeholder="e.g.: 123 High St."/> <br>
+Fuel Grade <input type="text" ng-model="payment.grade" placeholder="e.g.: Mid-Grade"/> <br>
+Gallons Purchased <input type="text" ng-model="payment.gallon" placeholder="0.00"/> <br>
+Price Per Gallon <input type="text" ng-model="payment.pricePerGallon" placeholder="0.00"/> <br>
+Total Purchase Price <input type="text" ng-model="payment.totalPrice" placeholder = "0.00"/> <br>
+Date <input type="text" ng-model="payment.date" placeholder="YYYY-MM-DD"/> <br>
+
+ <input class="btn" type="submit" value="Add Payment" ng-click="vm.addPayment(payment);payment={}"/>
+
+<br />
+<br/>
+<div id="box">
+<div>Fuel Payments Count:&nbsp;{{vm.getNumPayments()}} <br>
+Total Gallons Consumed:&nbsp;{{vm.getTotalGallons()|number:2}}<br>
+Total Money Spent:&nbsp;${{vm.getTotalPayments()|number:2}}<br>
+Average Price Per Gallon:&nbsp;${{vm.getAveragePricePerGallon()|number:2}}
+</div>
+</div>
+</form>
+
+<table ng-hide="vm.selected">
+  <tr>
+    <th>Store Name</th>
+    <th>Address</th>
+    <th>Grade</th>
+    <th>Gallons</th>
+    <th>Price Per Gallon</th>
+    <th>Total Purchase Price</th>
+    <th>Date</th>
+    <th>Delete</th>
+  </tr>
+  <tr ng-repeat="payment in vm.payments">
+    <td class="clickable" ng-click="vm.displayPayment(payment)">{{payment.storeName}}</td>
+    <td>
+  	{{payment.address}}
+    </td>
+    <td>
+    {{payment.grade}}
+    </td>
+     <td>
+    {{payment.gallon}}
+    </td>
+    <td>
+    {{payment.pricePerGallon}}
+    </td>
+    <td>
+    {{payment.totalPrice}}
+    </td>
+    <td>
+    {{payment.date}}
+    </td>
+    <td>
+    <button type="button" class = "btn" ng-click="vm.deletePayment(payment.id)">Delete
+    </button>
+    </td>
+  </tr>
+</table>
+<div ng-show="vm.selected && !vm.editPayment">
+<h2>Store Name: {{vm.selected.storeName}}</h2>
+<h3>Store Address: {{vm.selected.address}}</h3>
+<h3>Fuel Grade: {{vm.selected.grade}}</h3>
+<h3>Gallons Purchased: {{vm.selected.gallon}}</h3>
+<h3>Price Per Gallon: {{vm.selected.pricePerGallon}}</h3>
+<h3>Total Purchase Price: {{vm.selected.totalPrice}}</h3>
+<h3>Date: {{vm.selected.date}}</h3>
+
+<button class="btn" type="button" ng-click="vm.displayTable()">Take Me Back To Fuel Tracker</button><br>
+<button class = "btn" type="button" ng-click="vm.setEditPayment()">Edit Payment</button>
+
+</div>
+
+<form ng-show="vm.editPayment" ng-hide="!vm.editPayment" >
+Store Name<input type="text" ng-model="vm.editPayment.storeName" /><br />
+Store Address <input type="text" ng-model="vm.editPayment.address"/> <br>
+Fuel Grade <input type="text" ng-model="vm.editPayment.grade" placeholder="e.g.: Mid-Grade"/> <br>
+Gallons Purchased <input type="text" ng-model="vm.editPayment.gallon" placeholder="0.00"/> <br>
+Price Per Gallon <input type="text" ng-model="vm.editPayment.pricePerGallon" placeholder="$0.00"/> <br>
+Total Price <input type="text" ng-model="vm.editPayment.totalPrice" placeholder = "$0.00"/> <br>
+Date <input type="text" ng-model="vm.editPayment.date" placeholder="YYYY-MM-DD"/> <br>
+<input type="submit" value="Cancel" ng-click="vm.editPayment=null" /><br>
+<input type="submit" value="Save" ng-click="vm.updatePayment(vm.editPayment);vm.editPayment=null" />
+  
+</form> 	
+	</body>
+</html>
